@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar mensagem para o display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <header class="cabecalho">
+        <nav class="menu">
+            <a class="menu-link" href="index.html">Home</a>
+            <a class="menu-link" href="about.html">Sobre mim</a>
+            <a class="menu-link" href="projetos.html">Projetos</a>
+        </nav>
+    </header>  -->
+    
+    <main class="apresentacao">
+
+        <section class="texto">
+            <a class="nome__botao"><img src="coroa-real_1.svg" class="imagem__coroa"></a>
+            <a class="nome__botao"><img src="MrArthur.svg" class="imagem__nome"></a>
+            <h1 class="titulo">Mensagem a ser exibida no <strong class="destaque">Display</strong></h1>
+            <textarea id="message" rows="4" cols="50" maxlength="138" oninput="updateCharacterCount()"></textarea><br>
+            <p id="char">Caracteres restantes: <span id="charCount">138</span></p>
+    </div>
+
+    <div id="loading-bar">
+        <div id="loading-progress"></div>
+    </div>
+    
+    <p id="status"></p>
+        <div class="botoes">
+            <!-- -->
+            <button onclick="sendMessage()" id="botao"> <img src="enviar.png">Enviar para tela</button>
+            <h2 class="sub-redes">Redes Sociais</h2>
+            <a class="botoes-link" href="https://instagram.com/arthurremanuell" target="_blank"> <img src="instagram.png" alt="Icone do Instagram"> Instagram</a>
+            <a class="botoes-link" href="https://github.com/MrArthurEmanuel"target="_blank"><img src="github.png" alt="Icone do Github"> Github</a>
+            <script>
+     
+                function updateCharacterCount() {
+                       var maxLength = 138;
+                       var currentLength = document.getElementById("message").value.length;
+                       var remainingLength = maxLength - currentLength;
+                       remainingLength = Math.max(0, remainingLength);
+                       document.getElementById("charCount").innerText = remainingLength;
+                   }
+                  
+                   function showLoading() {
+                       document.getElementById("loading-bar").style.display = "block";
+                   }
+           
+                   function hideLoading() {
+                       document.getElementById("loading-bar").style.display = "none";
+                   }
+           
+                   function updateLoadingProgress(progress) {
+                       document.getElementById("loading-progress").style.width = progress + "%";
+                   }
+              
+                   function sendMessage() {
+                var message = document.getElementById("message").value.trim();
+               var message = document.getElementById("message").value;
+
+               if (message === '') {
+                alert('Por favor, insira uma mensagem antes de enviar.');
+                return; // Impede o envio da mensagem se estiver vazio
+                }
+               var xhr = new XMLHttpRequest();
+
+               xhr.open("POST", "http://192.168.0.30:8000", true);
+
+               xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+               xhr.onloadstart = function () {
+                   showLoading();
+               };
+               
+               
+           
+               xhr.onloadend = function () {
+                   hideLoading();
+               };
+               xhr.onreadystatechange = function() {
+                   if (xhr.readyState === 4) {
+                       hideLoading();
+                       if (xhr.status === 200) {
+                           document.getElementById("status").innerHTML = "Mensagem enviada com sucesso!";
+           
+                       } else if (xhr.status === 400) {
+                                   document.getElementById("status").innerHTML = "Erro: " + xhr.responseText;
+                       } else {
+                           document.getElementById("status").innerHTML = "Erro ao enviar a mensagem.";
+                       }
+                   }
+               };
+               xhr.send("message=" + encodeURIComponent(message));
+               showLoading();
+               }
+           
+               </script>
+            
+        </div>
+        </section>
+            <img class="imagem" src="foto-png.png" alt="Imagem do programador">
+    </main>
+    <footer class="rodape">
+        <p class="texto-rodape">Desenvolvido por Arthur</p>
+    </footer>
+</body>
+</html>

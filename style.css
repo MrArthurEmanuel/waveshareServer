@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@600&display=swap');
+
+
+/* Cores geral e fontes */
+:root{
+    --cor-princ: #000000;
+    --cor-secun: #ffffff;
+    --cor-terc: #83FF0D;
+    --cor-botoes: #83FF0D;
+    --cor-rodape: #83FF0D;
+
+    --fonte-primaria: 'Krona One', sans-serif;
+    --fonte-secundaria: 'Montserrat', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    box-sizing: border-box;
+    background-color: var(--cor-princ);
+    color: var(--cor-secun);
+    text-align: center;
+}
+
+#loading-bar {
+    text-align: center;
+    border: 10px solid var(--cor-botoes);
+    border-radius: 15px;
+    width: 100%; 
+    height: 10px;
+    background-color: var(--cor-botoes);
+    margin-top: 10px;
+    display: none;
+    animation: progress 1s infinite alternate;
+}
+
+#loading-progress {
+    height: 100%;
+    background-color: var(--cor-botoes);
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+    color: #83FF0D;
+}
+
+@keyframes progress {
+    0% { width: 5%; margin-left: 50%; }
+    100% { width: 100%; margin-left: 0%; }
+}
+
+
+
+textarea{
+    padding: 1%;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: var(--cor-terc);
+    resize: none;
+    font-size: 16px;
+    background-color: var(--cor-princ);
+    color: #ffffff;
+
+}
+
+#char{
+    text-align: center;
+    font-family: var(--fonte-primaria);
+    padding: 0%;
+}
+
+#message{
+    font-family: var(--fonte-primaria);
+}
+
+#botao{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    border: 2px solid var(--cor-terc);
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--fonte-secundaria);
+    padding: 21.5px 0;
+    text-decoration: none;
+    color: var(--cor-secun);
+    background-color: (var(--cor-princ));
+    font-weight: 600;
+}
+#botao:hover{
+    background-color: #83FF0D;
+    cursor: pointer;
+}
+
+.menu{
+    display: flex;
+    gap: 80px;
+}
+
+.menu-link{
+    color: var(--cor-terc);
+    font-family: var(--fonte-secundaria);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.apresentacao{
+    padding: 1% 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.destaque {
+    color: var(--cor-terc);
+}
+
+.texto{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.imagem__nome{
+    width:30%;
+    margin-top: -40px;
+    margin-left: 6px;
+}
+
+.imagem__coroa{
+    width: 10%;
+}
+.titulo{
+    font-size: 1.3rem;
+    font-family: var(--fonte-primaria);
+}
+
+.botoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.sub-redes{
+    font-family: var(--fonte-primaria);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.botoes-link{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    border: 2px solid var(--cor-terc);
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--fonte-secundaria);
+    padding: 21.5px 0;
+    text-decoration: none;
+    color: var(--cor-secun);
+}
+
+.botoes-link:hover{
+    background-color:var(--cor-botoes);
+    
+}
+
+.imagem{
+    width: 40%;
+}
+
+.rodape{
+    background-color: var(--cor-rodape);
+    font-family: var(--fonte-secundaria);
+    padding: 24px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+@media (min-width: 250px ) and (max-width: 1024px){
+    .apresentacao{
+        flex-direction: column-reverse;
+        padding: 10%;
+        
+    }
+    
+    #botao{
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .imagem{
+        display: none;
+    }
+
+    .status2{
+        font-family: var(--fonte-primaria);
+    }
+
+    .titulo{
+        width: auto;
+        align-items: center;
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    textarea{
+        font-size: 16px;
+        padding: 3%;
+    }
+    .texto{
+        width: 90%;
+        padding: 10px;
+    }
+
+    .imagem__nome{
+        width: 70%;
+        
+    }
+
+    .imagem__coroa{
+        margin-left: 2px;
+        width: 50%;
+    }
+
+    .paragrafo{
+        font-size: 100%;
+    }
+
+    .sub-redes{
+        font-size: 100%;
+    }
+
+    .botoes-link{
+        font-size: 25px;
+        padding: auto;
+        display: flex;
+        justify-content: center;
+        flex-shrink: 3;
+    }
+    .menu{
+        justify-content: center;
+    }
+}
